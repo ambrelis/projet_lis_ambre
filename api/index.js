@@ -10,7 +10,8 @@ const isProduction = process.env.NODE_ENV === 'production';
 // Liste des origines autorisées
 const allowedOrigins = [
   'http://localhost:4200', // Développement local
-  'https://tp07-lis-ambre.onrender.com', // Frontend production (à modifier)
+  'https://projet-lis-ambre.onrender.com', 
+  'https://templateweb-latest-4240.onrender.com', // NOUVEAU : Frontend Render actuel
   process.env.FRONTEND_URL // URL configurée via variable d'environnement
 ].filter(Boolean); // Enlever les valeurs undefined
 
