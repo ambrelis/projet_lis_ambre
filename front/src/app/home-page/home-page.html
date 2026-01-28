@@ -24,9 +24,12 @@
 <app-pollution-recap *ngIf="formValide" [data]="donneesRecapitulatif"></app-pollution-recap>
 
 
-<div *ngIf="isAdmin()">
-<h2>Gestion des utilisateurs</h2>
-<app-user-add></app-user-add>
-<app-user-list></app-user-list>
+<div *ngIf="isAdmin()" class="user-admin-container">
+  <h2>Gestion des utilisateurs</h2>
+  <button class="btn-primary" (click)="afficherFormUser = !afficherFormUser">
+    {{ afficherFormUser ? 'Cacher le formulaire utilisateur' : 'Ajouter un utilisateur' }}
+  </button>
+  <app-user-add *ngIf="afficherFormUser"></app-user-add>
+  <app-user-list></app-user-list>
 </div>
 

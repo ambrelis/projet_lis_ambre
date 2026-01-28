@@ -23,6 +23,8 @@ export class HomePage {
   formValide = false;
   donneesRecapitulatif: any;
 
+  afficherFormUser = false;
+
  // Ajout pour Edit / Detail
   pollutionToEdit: Pollution | null = null;
   pollutionToView: Pollution | null = null;
@@ -33,6 +35,10 @@ export class HomePage {
     }
   toggleFormulaire() {
     this.afficherFormulaire = !this.afficherFormulaire;
+  }
+
+  toggleFormUser() {
+    this.afficherFormUser = !this.afficherFormUser;
   }
 
   showDetail(pollution: Pollution) {

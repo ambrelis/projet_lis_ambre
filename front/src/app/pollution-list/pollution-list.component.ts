@@ -15,6 +15,13 @@ import { FavoritesState } from '../../shared/states/favorites-state';
   styleUrl: './pollution-list.component.css'
 })
 export class PollutionListComponent implements OnInit {
+      /** Affiche le formulaire d'ajout de pollution */
+      onAjouterPollution() {
+        // À adapter selon la logique de navigation ou d'affichage du formulaire
+        // Par exemple, navigation ou affichage d'un composant dédié
+        window.location.href = '/ajouter-pollution';
+        // Ou déclencher un EventEmitter, ou afficher un composant, selon votre architecture
+      }
     ngOnInit(): void {
       this.pollutionService.pollutions$.subscribe(data => {
         this.pollutions = data;

@@ -1,0 +1,41 @@
+/* Centrage et largeur harmonisée avec la liste des pollutions */
+.user-list-container {
+	max-width: 900px;
+	margin: 32px auto 0 auto;
+	padding: 0 18px;
+}
+
+.user-list-container h2 {
+	text-align: center;
+	color: #2c3e50;
+	margin-top: 50px;
+	margin-bottom: 20px;
+	font-size: 1.8rem;
+	font-weight: 600;
+}
+
+.user-list-container ul {
+	list-style: none;
+	padding: 0;
+	max-width: 900px;
+	margin: 30px auto;
+}
+
+.user-list-container ul li {
+	background: white;
+	padding: 20px;
+	margin-bottom: 15px;
+	border-radius: 8px;
+	box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	flex-wrap: wrap;
+	gap: 10px;
+	transition: all 0.3s;
+}
+
+.user-list-container ul li:hover {
+	box-shadow: 0 4px 12px rgba(0,0,0,0.12);
+	transform: translateY(-2px);
+}

@@ -1,0 +1,47 @@
+/* Design harmonisé avec le formulaire utilisateur */
+:host {
+	display: block;
+	max-width: 900px;
+	margin: 0 auto;
+	padding: 1.5rem;
+	background: white;
+	border-radius: 12px;
+	box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+}
+
+.form-container {
+	max-width: 100%;
+	margin: 0;
+	padding: 0;
+	background: none;
+	border-radius: 0;
+	box-shadow: none;
+}
+
+h2 {
+	color: #4b5563;
+	font-size: 1.3rem;
+	font-weight: 400;
+	margin-bottom: 1.25rem;
+	padding-bottom: 0.5rem;
+	border-bottom: 1px solid #e5e7eb;
+}
+
+@media (max-width: 640px) {
+	:host {
+		padding: 1.5rem;
+	}
+	h2 {
+		font-size: 1.25rem;
+	}
+}
+/* Encadré harmonisé pour le formulaire d'ajout de pollution */
+.form-container {
+	max-width: 480px;
+	margin: 2rem auto;
+	padding: 2rem;
+	background: #fff;
+	border-radius: 12px;
+	box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+	font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}

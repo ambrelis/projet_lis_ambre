@@ -1,3 +1,116 @@
+/* --- HARMONISATION GLOBALE DU DESIGN --- */
+
+body {
+  font-family: 'Segoe UI', 'Roboto', Arial, sans-serif;
+  background: #f7fafb;
+  color: #222;
+  margin: 0;
+}
+
+main, .main-content, .container, .page-content {
+  max-width: 900px;
+  margin: 32px auto 0 auto;
+  padding: 24px 18px 32px 18px;
+  background: #fff;
+  border-radius: 18px;
+  box-shadow: 0 4px 32px rgba(40, 167, 69, 0.07), 0 1.5px 6px rgba(0,0,0,0.04);
+}
+
+form, .form-group, .filters {
+  background: #f3f7f4;
+  border-radius: 12px;
+  padding: 18px 20px 12px 20px;
+  margin-bottom: 24px;
+  box-shadow: 0 1.5px 6px rgba(40, 167, 69, 0.04);
+}
+
+form label, .filters label {
+  display: block;
+  margin-bottom: 10px;
+  font-weight: 500;
+}
+
+input, select, textarea {
+  border: 1.5px solid #cbe7d6;
+  border-radius: 7px;
+  padding: 8px 12px;
+  font-size: 1rem;
+  margin-bottom: 14px;
+  width: 100%;
+  box-sizing: border-box;
+  background: #f9fdfb;
+  transition: border 0.2s;
+}
+input:focus, select:focus, textarea:focus {
+  border-color: #28a745;
+  outline: none;
+}
+
+.btn-primary, .btn-logout {
+  margin: 0 8px 8px 0;
+  border-radius: 7px;
+  min-width: 120px;
+  font-size: 1rem;
+  font-weight: 500;
+  padding: 10px 22px;
+  box-shadow: 0 2px 8px rgba(40, 167, 69, 0.08);
+  letter-spacing: 0.02em;
+}
+
+ul, ol {
+  padding-left: 24px;
+  margin-bottom: 24px;
+}
+
+ul li, ol li {
+  margin-bottom: 14px;
+  padding: 16px 18px;
+  background: #f6fdf8;
+  border-radius: 10px;
+  box-shadow: 0 1.5px 6px rgba(40, 167, 69, 0.04);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px 32px;
+  align-items: flex-end;
+}
+
+.filters label {
+  flex: 1 1 180px;
+  margin-bottom: 0;
+}
+
+.filters button {
+  flex: 0 0 auto;
+}
+
+@media (max-width: 700px) {
+  main, .main-content, .container, .page-content {
+    padding: 10px 2vw 18px 2vw;
+    border-radius: 10px;
+  }
+  form, .form-group, .filters {
+    padding: 10px 2vw 10px 2vw;
+    border-radius: 8px;
+  }
+  ul li, ol li {
+    padding: 10px 2vw;
+    border-radius: 7px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+  .btn-primary, .btn-logout {
+    min-width: 90px;
+    font-size: 0.98rem;
+    padding: 8px 12px;
+  }
+}
 /* ===================================
    STYLES GLOBAUX - APPLICATION
    Palette de couleurs harmonisée
@@ -115,27 +228,26 @@ button:disabled, .btn:disabled {
   box-shadow: 0 4px 8px rgba(40, 167, 69, 0.3);
 }
 
-.btn-secondary {
-  background-color: var(--primary-blue);
+
+.btn-primary {
+  background-color: var(--primary-green-dark);
   color: white;
+  border: none;
+  border-radius: 6px;
+  font-size: 1rem;
+  font-weight: 500;
+  padding: 10px 22px;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.2s, box-shadow 0.2s;
+  box-shadow: 0 2px 8px rgba(40, 167, 69, 0.08);
+  margin: 0 4px 4px 0;
+  display: inline-block;
 }
 
-.btn-secondary:hover:not(:disabled) {
-  background-color: var(--primary-blue-dark);
-}
-
-.btn-danger {
-  background-color: var(--danger-red);
-  color: white;
-}
-
-.btn-danger:hover:not(:disabled) {
-  background-color: var(--danger-red-dark);
-}
-
-.btn-warning {
-  background-color: var(--warning-yellow);
-  color: #212529;
+.btn-primary:hover:not(:disabled) {
+  background-color: var(--primary-green);
+  transform: translateY(-2px) scale(1.04);
+  box-shadow: 0 4px 16px rgba(40, 167, 69, 0.18);
 }
 
 .btn-warning:hover:not(:disabled) {
