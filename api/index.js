@@ -23,6 +23,8 @@ var corsOptions = {
       callback(null, true);
     } else {
       callback(null, false); // Refus CORS standard, pas d'erreur 500
+      
+      credentials:true;
     }
   },
   methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
