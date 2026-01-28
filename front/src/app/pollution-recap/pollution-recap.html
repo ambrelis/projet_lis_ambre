@@ -1,0 +1,20 @@
+<h2 class="titre2-recap">Récapitulatif de la déclaration</h2>
+
+<div class="recap">
+<ul>
+  <li><strong>Titre:</strong> {{ data?.titre }}</li>
+  <li><strong>Type:</strong> {{ data?.type }}</li>
+  <li><strong>Description:</strong> {{ data?.description }}</li>
+  <li><strong>Date:</strong> {{ data?.date }}</li>
+  <li><strong>Lieu:</strong> {{ data?.lieu }}</li>
+  <li><strong>Latitude:</strong> {{ data?.latitude }}</li>
+  <li><strong>Longitude:</strong> {{ data?.longitude }}</li>
+  <li>
+  <strong>Photo:</strong>
+  <div *ngIf="data?.photo; else noPhoto">
+    <img [src]="data.photo" alt="Photo de la pollution" style="max-width: 100%; height: auto;" />
+  </div>
+  <ng-template #noPhoto>Aucune photo fournie.</ng-template>
+</li>
+</ul>
+</div>

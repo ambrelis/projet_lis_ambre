@@ -1,0 +1,20 @@
+<div *ngIf="pollution" class="pollution-detail">
+  <h3>Détail de la pollution</h3>
+  <p><strong>Titre :</strong> {{ pollution.titre }}</p>
+  <p><strong>Lieu :</strong> {{ pollution.lieu }}</p>
+  <p><strong>Type :</strong> {{ pollution.type_pollution }}</p>
+  <p><strong>Date :</strong> {{ pollution.date_observation | date:'dd/MM/yyyy' }}</p>
+  <p><strong>Description :</strong> {{ pollution.description || 'Aucune description' }}</p>
+  <div>
+    <strong>Photo :</strong><br>
+    <ng-container *ngIf="pollution.photo_url; else noPhoto">
+      <img [src]="pollution.photo_url" alt="Photo pollution" style="max-width: 300px; max-height: 200px; border-radius: 8px; margin-top: 8px;">
+    </ng-container>
+    <ng-template #noPhoto>
+      <span style="color: #888;">Aucune photo fournie.</span>
+    </ng-template>
+  </div>
+</div>
+<div *ngIf="!pollution">
+  <p>Aucune pollution sélectionnée.</p>
+</div>

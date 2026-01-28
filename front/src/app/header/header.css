@@ -1,0 +1,173 @@
+.btn-primary {
+  /* ...autres styles existants... */
+  border: 2px solid #fff !important;
+  box-shadow: none;
+}
+/* Navigation principale */
+nav {
+  background: linear-gradient(135deg, #28a745 0%, #218838 100%);
+  padding: 0;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.15);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  min-height: 70px;
+  padding: 0 40px;
+}
+
+/* Section gauche - liens navigation */
+.nav-left {
+  display: flex;
+  gap: 30px;
+  align-items: center;
+}
+
+.nav-left a {
+  color: white;
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 16px;
+  padding: 10px 20px;
+  border-radius: 6px;
+  transition: all 0.3s;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  position: relative;
+}
+
+.nav-left a:hover {
+  background: rgba(255, 255, 255, 0.2);
+  transform: translateY(-2px);
+}
+
+.nav-left a.active {
+  background: rgba(255, 255, 255, 0.25);
+}
+
+/* Badge compteur favoris */
+.badge {
+  background: #ffc107;
+  color: #212529;
+  padding: 3px 8px;
+  border-radius: 12px;
+  font-size: 12px;
+  font-weight: 600;
+  min-width: 20px;
+  text-align: center;
+}
+
+/* Section droite - connexion/déconnexion */
+.nav-right {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.nav-right > div {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+/* Info utilisateur */
+.user-info {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 8px 15px;
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 25px;
+}
+
+.user-info span {
+  color: white;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+/* Boutons */
+.btn-logout,
+.btn-login,
+.btn-register {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s;
+  text-decoration: none;
+  display: inline-block;
+}
+
+.btn-logout {
+  background: rgba(220, 53, 69, 0.9);
+  color: white;
+}
+
+.btn-logout:hover {
+  background: #dc3545;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(220, 53, 69, 0.4);
+}
+
+.btn-login {
+  background: rgba(255, 255, 255, 0.2);
+  color: white;
+  border: 2px solid white;
+}
+
+.btn-login:hover {
+  background: white;
+  color: #28a745;
+}
+
+.btn-register {
+  background: #28a745;
+  color: white;
+}
+
+.btn-register:hover {
+  background: #218838;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(40, 167, 69, 0.4);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  nav {
+    padding: 0 20px;
+    flex-direction: column;
+    min-height: auto;
+    padding-top: 15px;
+    padding-bottom: 15px;
+  }
+
+  .nav-left,
+  .nav-right {
+    width: 100%;
+    justify-content: center;
+    margin: 8px 0;
+  }
+
+  .nav-left {
+    gap: 15px;
+  }
+
+  .user-info {
+    flex-direction: column;
+    gap: 10px;
+    padding: 10px;
+  }
+
+  .btn-logout,
+  .btn-login,
+  .btn-register {
+    width: 100%;
+    text-align: center;
+  }
+}

@@ -1,0 +1,26 @@
+<h2>Mes Favoris</h2>
+
+<div class="favorites-header" *ngIf="(favoritesCount$ | async) as count">
+  <p class="count-info">
+    Vous avez <strong>{{ count }}</strong> pollution(s) en favoris
+  </p>
+  <button *ngIf="count > 0" (click)="clearAllFavorites()" class="btn-clear">
+    Supprimer tous les favoris
+  </button>
+</div>
+
+<div *ngIf="(favoritePollutions$ | async) as favorites">
+  <p *ngIf="favorites.length === 0" class="no-favorites">
+    📋 Aucun favori pour le moment.<br>
+    Ajoutez des pollutions en favoris depuis la liste !
+  </p>
+  
+  <ul *ngIf="favorites.length > 0">
+    <li *ngFor="let p of favorites">
+      {{ p.titre }} - Type: {{ p.type_pollution }} - Date: {{ p.date_observation }}
+      <button (click)="toggleFav(p.id!)">
+        Retirer des favoris
+      </button>
+    </li>
+  </ul>
+</div>

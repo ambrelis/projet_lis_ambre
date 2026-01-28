@@ -1,0 +1,91 @@
+<div class="form-container">
+  <form [formGroup]="formGroup" class="pollutionForm" (ngSubmit)="onSubmit()" novalidate>
+
+    <label for="titre">Titre de la pollution :</label>
+    <input id="titre" formControlName="titre" type="text" [class.is-invalid]="isInvalidAndTouchedOrDirty(formGroup.controls.titre)">
+    <small class="text-danger " *ngIf="isInvalidAndTouchedOrDirty(formGroup.controls.titre)">The Title is required</small>
+
+
+    <label for="type">Type de pollution :</label>
+    <select id="type" formControlName="type_pollution" [class.is-invalid]="isInvalidAndTouchedOrDirty(formGroup.controls.type_pollution)">
+      <option value="" disabled selected>-- Sélectionnez --</option>
+      <option value="Plastique">Plastique</option>
+      <option value="Chimique">Chimique</option>
+      <option value="Dépôt sauvage">Dépôt sauvage</option>
+      <option value="Eau">Eau</option>
+      <option value="Air">Air</option>
+      <option value="Autre">Autre</option>
+    </select>
+    <small class="text-danger " *ngIf="isInvalidAndTouchedOrDirty(formGroup.controls.type_pollution)">The type of the pollution is required</small>
+
+
+    <label for="description">Description :</label>
+    <textarea  id="description" formControlName="description" [class.is-invalid]="isInvalidAndTouchedOrDirty(formGroup.controls.description)"></textarea>
+    <small class="text-danger " *ngIf="isInvalidAndTouchedOrDirty(formGroup.controls.description)">The comment is required</small>
+
+
+    <label for="date">Date de l’observation :</label>
+    <input id="date" formControlName="date_observation" type="date" [class.is-invalid]="isInvalidAndTouchedOrDirty(formGroup.controls.date_observation)">
+    <small class="text-danger " *ngIf="isInvalidAndTouchedOrDirty(formGroup.controls.date_observation)">The date is required</small>
+
+
+    <label for="lieu">Lieu :</label>
+    <input id="lieu" formControlName="lieu" type="text" [class.is-invalid]="isInvalidAndTouchedOrDirty(formGroup.controls.lieu)">
+    <small class="text-danger " *ngIf="isInvalidAndTouchedOrDirty(formGroup.controls.lieu)">The place is required</small>
+
+
+    <label for="latitude">Latitude :</label>
+    <input id="latitude" formControlName="latitude" type="number" step="any" [class.is-invalid]="isInvalidAndTouchedOrDirty(formGroup.controls.latitude)">
+    <small class="text-danger " *ngIf="isInvalidAndTouchedOrDirty(formGroup.controls.latitude)">The latitude is required</small>
+    <div *ngIf="formGroup.controls.latitude.errors?.['latitudeInvalid'] && (formGroup.controls.latitude.touched || formGroup.controls.latitude.dirty)" class="text-danger">
+    La latitude doit être un nombre entre -90 et 90.
+    </div>
+
+
+    <label for="longitude">Longitude :</label>
+    <input id="longitude" formControlName="longitude" type="number" step="any" [class.is-invalid]="isInvalidAndTouchedOrDirty(formGroup.controls.longitude)">
+    <small class="text-danger " *ngIf="isInvalidAndTouchedOrDirty(formGroup.controls.longitude)">The longitude is required</small>
+    <div *ngIf="formGroup.controls.longitude.errors?.['longitudeInvalid'] && (formGroup.controls.longitude.touched || formGroup.controls.longitude.dirty)" class="text-danger">
+    La longitude doit être un nombre entre -180 et 180.
+  </div>
+
+
+
+    <label for="photo">Photo (URL) :</label>
+    <input id="photo" formControlName="photo_url" type="text" >
+    <small class="text-info">
+      Indiquez une URL d’image valide (ex : https://.../photo.jpg)
+    </small>
+
+
+    <!-- NOUVEAU : Upload de fichier -->
+    <label for="photoFile">Ou uploader une photo :</label>
+    <input 
+      id="photoFile" 
+      type="file" 
+      accept="image/*" 
+      (change)="onFileSelected($event)"
+    >
+    <small class="text-info">
+      Taille maximale : 5 Mo. Formats acceptés : jpg, png, gif, webp.
+    </small>
+    <small *ngIf="selectedFile" class="text-success" style="display: flex; align-items: center; gap: 8px;">
+      ✅ Fichier sélectionné : {{ selectedFile.name }}
+      <span style="color: #888; font-size: 0.95em;">
+        ({{ selectedFile.size < 1024*1024 ? (selectedFile.size/1024 | number:'1.0-0') + ' Ko' : (selectedFile.size/1024/1024 | number:'1.2-2') + ' Mo' }})
+      </span>
+      <button type="button" (click)="removeSelectedFile()" style="background: none; border: none; color: #c00; font-size: 1.2em; cursor: pointer;" aria-label="Retirer la photo" title="Retirer la photo">✖</button>
+    </small>
+    <small *ngIf="uploadingPhoto" class="text-info">
+      ⏳ Upload en cours...
+    </small>
+
+    <label for="user">Utilisateur</label>
+    <select [formControl]="selectedUser">
+      <option *ngFor="let user of users" [value]="user.id">{{ user.nom }} {{ user.prenom }}</option>
+    </select>
+
+
+    <button class="btnFormPollution" type="submit" [disabled]="formGroup.invalid">Déclarer</button>
+  </form>
+</div>

@@ -1,0 +1,32 @@
+<h1 class="titre1">Déclaration de pollution</h1>
+
+<!-- Bouton pour afficher/cacher le formulaire d'ajout -->
+<button class="btn-global" (click)="toggleFormulaire()">
+  {{ afficherFormulaire ? 'Cacher le formulaire' : 'Ajouter une nouvelle pollution' }}
+</button>
+
+<!-- Formulaire d'ajout -->
+<app-pollution-add *ngIf="afficherFormulaire"></app-pollution-add>
+
+<!-- Liste de toutes les pollutions -->
+<app-pollution-list
+  (voirDetail)="showDetail($event)"
+  (editPollutionEvent)="editPollution($event)">
+</app-pollution-list>
+
+<!-- Détails -->
+<app-pollution-detail *ngIf="pollutionToView" [pollution]="pollutionToView"></app-pollution-detail>
+
+<!-- Edition -->
+<app-pollution-edit *ngIf="pollutionToEdit" [pollution]="pollutionToEdit"></app-pollution-edit>
+
+<!-- Récap après déclaration (optionnel si tu veux garder ce composant) -->
+<app-pollution-recap *ngIf="formValide" [data]="donneesRecapitulatif"></app-pollution-recap>
+
+
+<div *ngIf="isAdmin()">
+<h2>Gestion des utilisateurs</h2>
+<app-user-add></app-user-add>
+<app-user-list></app-user-list>
+</div>
+

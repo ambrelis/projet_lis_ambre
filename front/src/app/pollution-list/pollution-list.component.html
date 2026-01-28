@@ -1,0 +1,41 @@
+<h2>Liste des pollutions</h2>
+
+<!-- filtres -->
+<div class="filters">
+  <h3>Filtres</h3>
+  <label>
+    Type :
+    <input type="text" [(ngModel)]="filter.type" (ngModelChange)="onFilterChange()"placeholder="Ex: Air, Eau..." />
+  </label>
+
+  <label>
+    Date :
+    <input type="date" [(ngModel)]="filter.date" (ngModelChange)="onFilterChange()"/>
+  </label>
+
+  <button class="btn-primary" (click)="clearFilters()">Réinitialiser</button>
+</div>
+
+
+
+<app-pollution-edit *ngIf="pollutionToEdit" [pollution]="pollutionToEdit">
+  <button class="btn-close" (click)="closeEdit()">Fermer la modification</button>
+</app-pollution-edit>
+<div *ngIf="pollutionToView">
+  <app-pollution-detail [pollution]="pollutionToView"></app-pollution-detail>
+  <button class="btn-close" (click)="closeDetail()">Fermer le détail</button>
+</div>
+
+<ul>
+  <li *ngFor="let p of filteredPollutions">
+    {{ p.titre }} - Type: {{ p.type_pollution }} - Date: {{ p.date_observation | date:'dd/MM/yyyy' }}
+    <button class="btn-primary" (click)="viewDetail(p)">Détail</button>
+    <button class="btn-primary" (click)="editPollution(p)">Modifier</button>
+    <button class="btn-primary" (click)="deletePollution(p.id)">Supprimer</button>
+     <button class="btn-primary" (click)="toggleFav(p.id!)">
+      {{ isFavorite(p.id!) ? 'Retirer des favoris' : 'Ajouter aux favoris' }}
+    </button>
+  </li>
+</ul>
+
+

@@ -1,0 +1,35 @@
+<div class="favorites-container">
+  <h2>Mes Favoris</h2>
+
+  <div class="favorites-header" *ngIf="(favoritesCount$ | async) as count">
+    <p class="count-info">Vous avez <strong>{{ count }}</strong> pollution(s) en favoris</p>
+    <button *ngIf="count > 0" (click)="clearAllFavorites()" class="btn-clear">
+      Supprimer tous les favoris
+    </button>
+  </div>
+
+  <div *ngIf="(favoritePollutions$ | async) as favorites">
+    <p *ngIf="favorites.length === 0" class="no-favorites">
+      Aucun favori pour le moment. Ajoutez des pollutions en favoris depuis la liste !
+    </p>
+    
+    <div class="favorites-list" *ngIf="favorites.length > 0">
+      <div class="favorite-card" *ngFor="let pollution of favorites">
+        <div class="card-header">
+          <h3>{{ pollution.titre }}</h3>
+          <button (click)="removeFavorite(pollution.id!)" class="btn-remove" title="Retirer des favoris">
+          </button>
+        </div>
+        <div class="card-body">
+          <p><strong>Type:</strong> {{ pollution.type_pollution }}</p>
+          <p><strong>Date:</strong> {{ pollution.date_observation | date: 'dd/MM/yyyy' }}</p>
+          <p *ngIf="pollution.lieu"><strong>Lieu:</strong> {{ pollution.lieu }}</p>
+          <p *ngIf="pollution.description"><strong>Description:</strong> {{ pollution.description }}</p>
+        </div>
+        <div class="card-footer">
+          <a [routerLink]="['/pollutions']" class="btn-details">Voir la liste</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

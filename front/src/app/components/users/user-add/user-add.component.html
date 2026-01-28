@@ -1,0 +1,58 @@
+<h2>Ajouter un utilisateur</h2>
+<form (ngSubmit)="addUser()">
+  <label>
+    Nom:
+    <input type="text" [(ngModel)]="user.nom" name="nom" required />
+  </label>
+  <br />
+
+  <label>
+    Prénom:
+    <input type="text" [(ngModel)]="user.prenom" name="prenom" required />
+  </label>
+  <br />
+
+  <label>
+    Email:
+    <input type="email" [(ngModel)]="user.email" name="email" required />
+  </label>
+  <br />
+
+  <label>
+    Mot de passe:
+    <input type="password" [(ngModel)]="user.mot_de_passe" name="mot_de_passe" required />
+  </label>
+  <br />
+
+  <label>
+    Téléphone:
+    <input type="text" [(ngModel)]="user.telephone" name="telephone" />
+  </label>
+  <br />
+
+  <label>
+    Organisation:
+    <input type="text" [(ngModel)]="user.organisation" name="organisation" />
+  </label>
+  <br />
+
+  <label>
+    Rôle:
+    <select [(ngModel)]="user.role" name="role">
+      <option value="citoyen">Citoyen</option>
+      <option value="entreprise">Entreprise</option>
+      <option value="admin">Admin</option>
+    </select>
+  </label>
+  <br />
+
+  <label>
+    Adresse:
+    <input type="text" [(ngModel)]="user.adresse" name="adresse" />
+  </label>
+  <br />
+
+  <button type="submit">Ajouter</button>
+</form>
+
+<p *ngIf="message">{{ message }}</p>

@@ -1,0 +1,20 @@
+<nav>
+  <div class="nav-left">
+    <a routerLink="/pollutions" *ngIf="isConnected()">Pollutions</a>
+    <a routerLink="/favoris" *ngIf="isConnected()">
+      Favoris
+      <span class="badge">{{ favoritesCount }}</span>
+    </a>
+  </div>
+  
+  <div class="nav-right">
+    <div *ngIf="isConnected()" class="user-info">
+      <span>{{ user()?.email }}</span>
+      <button (click)="logout()" class="btn-primary">Déconnexion</button>
+    </div>
+    <div *ngIf="!isConnected()">
+      <a routerLink="/login" class="btn-login">Connexion</a>
+      <a routerLink="/register" class="btn-register">Inscription</a>
+    </div>
+  </div>
+</nav>

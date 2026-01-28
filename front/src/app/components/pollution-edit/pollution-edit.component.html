@@ -1,0 +1,56 @@
+<div *ngIf="pollution">
+  <form class="edit-form">
+  <h3>Modifier la pollution</h3>
+  <label>
+    Titre:
+    <input [(ngModel)]="pollution.titre" name="titre" />
+  </label>
+  <label>
+    Lieu:
+    <input [(ngModel)]="pollution.lieu" name="lieu" />
+  </label>
+  <label for="type">Type :
+    <input id="type" [(ngModel)]="pollution.type_pollution" name="type_pollution" />
+  </label>
+  <label for="date">Date :
+    <input id="date" type="date" [(ngModel)]="pollution.date_observation" name="date_observation" />
+  </label>
+  <label for="description">Description :
+    <textarea id="description" [(ngModel)]="pollution.description" name="description"></textarea>
+  </label>
+
+  <label>
+    Photo actuelle :
+    <div *ngIf="pollution.photo_url; else noPhoto">
+      <img [src]="pollution.photo_url" alt="Photo pollution" style="max-width: 200px; max-height: 120px; border-radius: 6px; margin: 8px 0;">
+    </div>
+    <ng-template #noPhoto>
+      <span style="color: #888;">Aucune photo</span>
+    </ng-template>
+  </label>
+
+  <label>
+    Nouvelle photo (upload) :
+    <input type="file" accept="image/*" (change)="onFileSelected($event)">
+    <small class="text-info">Taille max : 5 Mo. Formats : jpg, png, gif, webp.</small>
+    <span *ngIf="selectedFile" style="color: #28a745;">✅ {{ selectedFile.name }}</span>
+  </label>
+
+  <label>
+    Nouvelle photo (URL) :
+    <input type="text" [(ngModel)]="photoUrlInput" name="photoUrlInput" placeholder="https://.../photo.jpg">
+    <small class="text-info">Indiquez une URL d’image valide.</small>
+  </label>
+
+    <div class="edit-actions">
+      <button type="button" class="btn-primary" (click)="saveChanges()">Enregistrer</button>
+    </div>
+  </form>
+</div>
+<div *ngIf="!pollution" class="edit-empty">
+  <p>Aucune pollution sélectionnée pour modification.</p>
+</div>
+
+<div *ngIf="!pollution">
+  <p>Aucune pollution sélectionnée pour modification.</p>
+</div>
