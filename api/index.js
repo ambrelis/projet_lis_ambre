@@ -17,17 +17,12 @@ const allowedOrigins = [
 
 var corsOptions = {
   origin: function (origin, callback) {
-    // ...log supprimé...
     // Autoriser les requêtes sans origin (ex: Postman, curl)
     if (!origin) return callback(null, true);
-    
     if (allowedOrigins.indexOf(origin) !== -1) {
-      // ...log supprimé...
       callback(null, true);
     } else {
-      // ...log supprimé...
-      // ...log supprimé...
-      callback(new Error('Non autorisé par CORS'));
+      callback(null, false); // Refus CORS standard, pas d'erreur 500
     }
   },
   methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
@@ -67,7 +62,6 @@ require("./routes")(app);
 
 // Gestionnaire d'erreur global Express (à placer après les routes)
 app.use((err, req, res, next) => {
-  console.error('--- ERREUR EXPRESS GLOBALE ---');
   console.error(err);
   if (err instanceof Error && err.message) {
     res.status(500).json({ message: err.message, error: err });
@@ -79,6 +73,5 @@ app.use((err, req, res, next) => {
 // set port, listen for requests
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
-  // ...logs supprimés...
 });
 
