@@ -60,7 +60,6 @@ db.sequelize.sync({ alter: true })
   });
 
 require("./routes")(app);
-require("./routes")(app);
 
 // Gestionnaire d'erreur global Express (à placer après les routes)
 app.use((err, req, res, next) => {
