@@ -21,7 +21,7 @@ export interface User {
 })
 
 export class UserService {
-  private apiUrl = `${environment.apiUrl}/api/users`;
+  private apiUrl = `${environment.apiUrl}/users`;
 
   private usersSubject = new BehaviorSubject<User[]>([]);
   users$ = this.usersSubject.asObservable();

@@ -15,7 +15,7 @@ export interface FavoriteResponse {
   providedIn: 'root'
 })
 export class FavoritesService {
-  private apiUrl = `${environment.apiUrl}/api/favorites`;
+  private apiUrl = `${environment.apiUrl}/favorites`;
 
   constructor(private http: HttpClient) {}
 
