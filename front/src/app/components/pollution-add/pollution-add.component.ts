@@ -37,7 +37,7 @@ export class PollutionAddComponent {
 
       try {
         const response: any = await this.http.post(
-          `${environment.apiUrl}/api/pollution/upload`,
+          `${environment.apiUrl}/pollution/upload`,
           formData,
           { headers }
         ).toPromise();
