@@ -15,22 +15,6 @@ const allowedOrigins = [
   process.env.FRONTEND_URL // URL configurée via variable d'environnement
 ].filter(Boolean); // Enlever les valeurs undefined
 
-var corsOptions = {
-  origin: function (origin, callback) {
-    // Autoriser les requêtes sans origin (ex: Postman, curl)
-    if (!origin) return callback(null, true);
-    if (allowedOrigins.indexOf(origin) !== -1) {
-      callback(null, true);
-    } else {
-      callback(null, false); // Refus CORS standard, pas d'erreur 500
-      
-      credentials:true;
-    }
-  },
-  methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
-  allowedHeaders: ['Content-Type', 'Authorization'],
-  exposedHeaders: ['Authorization']
-};
 
 // ...logs supprimés...
 
